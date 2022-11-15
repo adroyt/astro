@@ -13,23 +13,23 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "astro": "^1.6.1",
+    "astro": "^1.6.8",
     "clsx": "^1.2.1"
   },
   "packageManager": "yarn@3.2.4",
   "devDependencies": {
     "@astrojs/svelte": "^1.0.2",
-    "@iconify/json": "^2.1.130",
-    "@typescript-eslint/eslint-plugin": "^5.41.0",
-    "@typescript-eslint/parser": "^5.41.0",
-    "eslint": "^8.26.0",
+    "@iconify/json": "^2.1.138",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-astro": "^0.20.0",
+    "eslint-plugin-astro": "^0.21.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.7.0",
     "prettier-plugin-svelte": "^2.8.0",
-    "svelte": "^3.52.0",
+    "svelte": "^3.53.1",
     "unocss": "^0.46.1"
   }
 }
