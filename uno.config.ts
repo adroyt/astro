@@ -1,50 +1,53 @@
-// alteranative import
-// import {
-//   defineConfig,
-//   extractorSvelte
-//   presetIcons,
-//   presetUno,
-//   presetAttributify,
-//   transformerDirectives,
-//   transformerVariantGroup,
-// } from "unocss";
+import extractorSvelte from "@unocss/extractor-svelte";
+import {
+	defineConfig,
+	presetIcons,
+	presetUno,
+	presetAttributify,
+	transformerDirectives,
+	transformerCompileClass,
+	transformerVariantGroup,
+} from "unocss";
+import { myPreset } from "./my-preset";
 
-// https://github.com/unocss/unocss/tree/main/packages/vite
-// https://github.com/unocss/unocss/tree/main/packages/vite#svelte
-// https://github.com/unocss/unocss/tree/main/packages/preset-uno
-// https://github.com/unocss/unocss/tree/main/packages/preset-attributify
-// https://github.com/unocss/unocss/tree/main/packages/preset-icons
-// https://github.com/unocss/unocss/tree/main/packages/transformer-directives
-// https://github.com/unocss/unocss/tree/main/packages/transformer-variant-group
-
-import { defineConfig } from "@unocss/vite";
-import { extractorSvelte } from "@unocss/core";
-import presetUno from "@unocss/preset-uno";
-import presetAttributify from "@unocss/preset-attributify";
-import presetIcons from "@unocss/preset-icons";
-import transformerDirective from "@unocss/transformer-directives";
-import transformerVariantGroup from "@unocss/transformer-variant-group";
-
-// https://github.com/unocss/unocss#configurations
+// https://unocss.dev
 export default defineConfig({
-  extractors: [extractorSvelte],
+	extractors: [extractorSvelte],
+	configDeps: ["./my-preset.ts"],
 
-  // https://github.com/unocss/unocss#extend-theme
-  theme: {},
+	theme: {},
 
-  // https://github.com/unocss/unocss#custom-rules
-  rules: [],
+	rules: [],
 
-  // https://github.com/unocss/unocss#shortcuts
-  shortcuts: {},
+	shortcuts: [],
 
-  // https://github.com/unocss/unocss#using-presets
-  presets: [
-    presetUno(),
-    presetIcons({
-      scale: 1.2,
-    }),
-    presetAttributify(),
-  ],
-  transformers: [transformerDirective(), transformerVariantGroup()],
+	variants: [],
+
+	preflights: [
+		{
+			getCSS: () => `
+        :root {
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+          position: relative;
+          overflow-x: hidden;
+        }
+      `,
+		},
+	],
+
+	transformers: [
+		transformerDirectives(),
+		transformerVariantGroup(),
+		transformerCompileClass(),
+	],
+
+	presets: [
+		myPreset,
+		presetUno(),
+		presetIcons({ scale: 1.2 }),
+		presetAttributify(),
+	],
 });
